@@ -1,0 +1,26 @@
+{
+	"name": "@stream-keepr/eslint",
+	"type": "module",
+	"version": "1.0.0",
+	"private": true,
+	"exports": {
+		".": "./index.mjs",
+		"./nuxt": "./nuxt.mjs"
+	},
+	"main": "./index.mjs",
+	"files": [
+		"index.mjs",
+		"nuxt.mjs"
+	],
+	"scripts": {
+		"clean": "rm -rf node_modules pnpm-lock.yaml"
+	},
+	"peerDependencies": {
+		"eslint": ">=9.0.0"
+	},
+	"dependencies": {
+		"@antfu/eslint-config": "catalog:",
+		"@prettier/plugin-xml": "catalog:",
+		"eslint-plugin-format": "catalog:"
+	}
+}

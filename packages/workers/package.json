@@ -1,0 +1,24 @@
+{
+	"name": "@stream-keepr/workers",
+	"type": "module",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"clean": "rm -rf node_modules pnpm-lock.yaml",
+		"push": "wrangler deploy",
+		"dev": "wrangler dev",
+		"test": "vitest",
+		"types": "wrangler types"
+	},
+	"dependencies": {
+		"@rivetkit/cloudflare-workers": "catalog:",
+		"rivetkit": "catalog:"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "catalog:",
+		"@types/node": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:",
+		"wrangler": "catalog:"
+	}
+}

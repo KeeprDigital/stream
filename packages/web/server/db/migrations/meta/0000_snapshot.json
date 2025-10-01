@@ -1,0 +1,314 @@
+{
+	"id": "4ce074fd-567c-42f4-b79e-44ef3abcdd78",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"version": "7",
+	"dialect": "postgresql",
+	"tables": {
+		"public.configs": {
+			"name": "configs",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "now()"
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.overlay_configs": {
+			"name": "overlay_configs",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"config_id": {
+					"name": "config_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"match_orientation": {
+					"name": "match_orientation",
+					"type": "match_orientation",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"card_timeout": {
+					"name": "card_timeout",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"card_size": {
+					"name": "card_size",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"clear_preview_on_show": {
+					"name": "clear_preview_on_show",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"overlay_configs_config_id_configs_id_fk": {
+					"name": "overlay_configs_config_id_configs_id_fk",
+					"tableFrom": "overlay_configs",
+					"tableTo": "configs",
+					"columnsFrom": [
+						"config_id"
+					],
+					"columnsTo": [
+						"id"
+					],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.talents": {
+			"name": "talents",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"config_id": {
+					"name": "config_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"talents_config_id_configs_id_fk": {
+					"name": "talents_config_id_configs_id_fk",
+					"tableFrom": "talents",
+					"tableTo": "configs",
+					"columnsFrom": [
+						"config_id"
+					],
+					"columnsTo": [
+						"id"
+					],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.tournament_configs": {
+			"name": "tournament_configs",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"config_id": {
+					"name": "config_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"game": {
+					"name": "game",
+					"type": "game",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"description": {
+					"name": "description",
+					"type": "varchar(1000)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"days": {
+					"name": "days",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"event_mode": {
+					"name": "event_mode",
+					"type": "event_mode",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"default_clock_duration": {
+					"name": "default_clock_duration",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"default_clock_mode": {
+					"name": "default_clock_mode",
+					"type": "clock_mode",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"swiss_rounds": {
+					"name": "swiss_rounds",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"swiss_round_time": {
+					"name": "swiss_round_time",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"cut_rounds": {
+					"name": "cut_rounds",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"cut_round_time": {
+					"name": "cut_round_time",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"player_count": {
+					"name": "player_count",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"tournament_configs_config_id_configs_id_fk": {
+					"name": "tournament_configs_config_id_configs_id_fk",
+					"tableFrom": "tournament_configs",
+					"tableTo": "configs",
+					"columnsFrom": [
+						"config_id"
+					],
+					"columnsTo": [
+						"id"
+					],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		}
+	},
+	"enums": {
+		"public.clock_mode": {
+			"name": "clock_mode",
+			"schema": "public",
+			"values": [
+				"countdown",
+				"countup"
+			]
+		},
+		"public.event_mode": {
+			"name": "event_mode",
+			"schema": "public",
+			"values": [
+				"manual",
+				"tournament"
+			]
+		},
+		"public.game": {
+			"name": "game",
+			"schema": "public",
+			"values": [
+				"mtg",
+				"op"
+			]
+		},
+		"public.match_orientation": {
+			"name": "match_orientation",
+			"schema": "public",
+			"values": [
+				"horizontal",
+				"vertical"
+			]
+		}
+	},
+	"schemas": {},
+	"sequences": {},
+	"roles": {},
+	"policies": {},
+	"views": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
+}
